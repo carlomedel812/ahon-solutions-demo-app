@@ -1,18 +1,13 @@
-version: "3.7"
+version: '3.9'
 
 services:
-  db-acamp:
-    image: mysql:5.7
-    volumes:
-      - demo:/var/lib/mysql
+  postgres:
+    image: postgres:14-alpine
     ports:
-      - "33061:3306"
-    restart: always
+      - 5432:5432
+    volumes:
+      - demo/data
     environment:
-      - MYSQL_DATABASE=demo
-      - MYSQL_USER=test
-      - MYSQL_PASSWORD=test
-      - MYSQL_ROOT_PASSWORD=test
-
-volumes:
-  db-acamp:
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_USER=test
+      - POSTGRES_DB=demo
